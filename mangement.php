@@ -1,5 +1,3 @@
-<?php
-
 passthru("sudo rm -rf /etc/hostname");
 passthru("sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup");
 file_put_contents("/etc/hostname", "TESLA");
@@ -105,4 +103,3 @@ while (true) {
             break;
     }
 }
-?>
