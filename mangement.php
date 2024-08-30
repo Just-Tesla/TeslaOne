@@ -1,7 +1,37 @@
+function bot($token,$method,$datas=[]){
+    $url = "https://api.telegram.org/bot".$token."/".$method;
+    $ch = curl_init();
+    curl_setopt($ch,CURLOPT_URL,$url);
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+    curl_setopt($ch,CURLOPT_POSTFIELDS,$datas);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    $res = curl_exec($ch);
+    curl_close($ch);
+    return json_decode($res);
+}
+
+
 $args = $_SERVER['argv'];
 if($args[1]=='update'){
     passthru('clear && figlet Tesla && sudo apt update && sudo apt upgrade && clear && echo Update success.');
     exit();
+}elseif($args[1]=='backup'){
+$token = readline("Enter your token: ");
+echo "
+";
+$id = readline("Enter your ID: ");
+passthru("zip -r /root.zip ../root");
+passthru("zip -r /html.zip ../var/www/html");
+bot($token,'SendDocument',[
+'chat_id'=>$id,
+'document'=>new CURLFile('root.zip'),
+'caption'=>'Tesla BackUp',
+]);
+bot($token,'SendDocument',[
+'chat_id'=>$id,
+'document'=>new CURLFile('html.zip'),
+'caption'=>'Tesla BackUp',
+]);
 }
 passthru("sudo rm -rf /etc/hostname");
 passthru("sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup");
