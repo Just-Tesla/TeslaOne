@@ -115,6 +115,7 @@ source $ZSH/oh-my-zsh.sh
 
 
 clear
-figlet Tesla
+neofetch
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-echo 'You can use Tesla Control panel using tesla command'
+echo 'Tesla Control panel has been installed and ready to use\n\n'
+echo 'You can use Tesla Control panel using tesla command\n'
