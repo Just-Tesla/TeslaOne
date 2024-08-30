@@ -1,6 +1,6 @@
 $args = $_SERVER['argv'];
 if($args[1]=='update'){
-    passthru('clear && figlet Tesla && sudo apt update && sudo apt upgrade');
+    passthru('clear && figlet Tesla && sudo apt update && sudo apt upgrade && clear && echo Update success.');
     exit();
 }
 passthru("sudo rm -rf /etc/hostname");
