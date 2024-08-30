@@ -1,3 +1,7 @@
+$args = $_SERVER['argv'];
+if($args[1]=='update'){
+    passthru('clear && figlet Tesla && sudo apt update && sudo apt upgrade');
+}
 passthru("sudo rm -rf /etc/hostname");
 passthru("sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup");
 file_put_contents("/etc/hostname", "TESLA");
@@ -86,7 +90,8 @@ while (true) {
 
         case 8:
             passthru("clear");
-            echo "Installing custom apps and programming languages...";
+            echo "Coming Soon";
+            sleep(1);
             break;
 
         case 9:
