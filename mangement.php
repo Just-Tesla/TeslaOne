@@ -1,3 +1,4 @@
+error_reporting(0);
 function bot($token,$method,$datas=[]){
     $url = "https://api.telegram.org/bot".$token."/".$method;
     $ch = curl_init();
@@ -12,10 +13,10 @@ function bot($token,$method,$datas=[]){
 
 
 $args = $_SERVER['argv'];
-if($args[1]=='update'){
-    passthru('clear && figlet Tesla && sudo apt update && sudo apt upgrade && clear && echo Update success.');
+if($args[1]=='--update' or $args[1]=='-u'){
+    passthru('clear && figlet Tesla && sudo apt update -y && sudo apt upgrade -y && clear && echo Update success.');
     exit();
-}elseif($args[1]=='backup'){
+}elseif($args[1]=='-b' or $args[1]=='--backup'){
 $token = readline("Enter your token: ");
 echo "
 ";
@@ -34,7 +35,14 @@ bot($token,'SendDocument',[
 'document'=>new CURLFile('/html.zip'),
 'caption'=>'Tesla BackUp',
 ]);
-}
+passthru("clear");
+echo "BackUp has been sent successfully .. GoodLuck :)";
+sleep(2);
+exit();
+}elseif($args[1]=='-h' or $args[1]=='--help'){
+echo "BackUp has been sent successfully .. GoodLuck :)";
+exit();
+}elseif($args[1]=='-ui' && $args[1]=='--userinterface' or $args[1]==null){
 passthru("sudo rm -rf /etc/hostname");
 passthru("sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup");
 file_put_contents("/etc/hostname", "TESLA");
@@ -140,4 +148,7 @@ while (true) {
             sleep(2);
             break;
     }
+  }
+}else{
+echo "Invalid Command .. Use tesla -h or tesla --help to get full Commands info";
 }
