@@ -117,4 +117,4 @@ source $ZSH/oh-my-zsh.sh
 clear
 figlet Tesla
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-php mangement.php
+echo 'You can use Tesla Control panel using tesla command'
